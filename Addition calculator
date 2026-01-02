@@ -1,0 +1,41 @@
+#addservlet.java
+package com.add;
+
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+@WebServlet("/add")                                                                                                                                    
+public class AddServlet extends
+HttpServlet{
+	public void service(HttpServletRequest req,HttpServletResponse res) throws IOException {
+		int num1=Integer.parseInt(req.getParameter("num1"));
+		int num2=Integer.parseInt(req.getParameter("num2"));
+		int sum=num1+num2;
+		PrintWriter out=res.getWriter();
+		out.println(sum);
+	}
+}
+
+#addition.html
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<title>Addition Calculator</title>
+</head>
+<body>
+<h2>Addition Calculator</h2>
+<form action="add" method="post">
+Enter First Number:
+<input type="text" name="num1"><br><br>
+Enter Second Number:
+<input type="text" name="num2"><br><br>                               
+<input type="submit" value="Add">
+</form>
+
+</body>
+</html>
